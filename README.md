@@ -1,5 +1,5 @@
 # masterHtml
-a Gulp project for HTML working by PhuPT
+a Gulp project for HTML working by Hồ Quận
 
 **Supported:**
 - _js:_ concat, hint, minify, convert es6 to es5
@@ -19,10 +19,11 @@ a Gulp project for HTML working by PhuPT
 - _dist:_ distribution - place to run
 
 **Using:**
+- NOTE: NodeJS < 12
 - Clone this
 - run _npm install_ to download all node modules
 - open command line then go to masterHtml by using _cd_ command
 - run _gulp_ command to start
 - That's!
 
-Contact me: **phuptqn@gmail.com**
+Contact me: **phanhoquan@gmail.com**
