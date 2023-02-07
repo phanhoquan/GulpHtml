@@ -19,7 +19,7 @@ a Gulp project for HTML working by Hồ Quận
 - _dist:_ distribution - place to run
 
 **Using:**
-- NOTE: NodeJS < 12
+- NOTE: NodeJS > 12
 - Clone this
 - run _npm install_ to download all node modules
 - open command line then go to masterHtml by using _cd_ command
