@@ -130,7 +130,7 @@ gulp.task("js", gulp.series("babeljs"), function () {
 });
 
 gulp.task("htmlinclude", function () {
-	browserSync.reload();
+  browserSync.reload();
   return gulp
     .src([paths.views + "/*.html"])
     .pipe(
@@ -155,17 +155,17 @@ gulp.task("browser-sync", function () {
 });
 
 // Watch
-gulp.task('stream', () => {
-	browserSync.init(null, {
-	open: false,
-		server: {
-			baseDir: "./dist",
-		},
-	});
-	gulp.watch(paths.views + "/**/*.html", gulp.series('htmlinclude'));
-	gulp.watch(paths.scss + "/**/*.scss", gulp.series('sass'));
-	gulp.watch(paths.js + "/**/*.js", gulp.series('js'));
-	gulp.watch(paths.dist + "/**/*", browserSync.reload);
+gulp.task("stream", () => {
+  browserSync.init(null, {
+    open: false,
+    server: {
+      baseDir: "./dist",
+    },
+  });
+  gulp.watch(paths.views + "/**/*.html", gulp.series("htmlinclude"));
+  gulp.watch(paths.scss + "/**/*.scss", gulp.series("sass"));
+  gulp.watch(paths.js + "/**/*.js", gulp.series("js"));
+  gulp.watch(paths.dist + "/**/*", browserSync.reload);
 });
 
 var tasks = gulp.series(
@@ -180,10 +180,13 @@ var tasks = gulp.series(
 );
 
 // Start development server
-gulp.task('start', gulp.parallel('stream', () => {
-	console.log('Development version is running...');
-}));
-  
+gulp.task(
+  "start",
+  gulp.parallel("stream", () => {
+    console.log("Development version is running...");
+  })
+);
+
 gulp.task("build", tasks);
-gulp.task("default", gulp.series('start'));
+gulp.task("default", gulp.series("start"));
 gulp.task("watch", tasks);
