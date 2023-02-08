@@ -10,7 +10,7 @@ var gulp = require("gulp"),
   babel = require("gulp-babel"),
   wait = require("gulp-wait"),
   watch = require("gulp-watch"),
-  image = require('gulp-image'),
+  image = require("gulp-image"),
   browserSync = require("browser-sync").create();
 
 var paths = {
@@ -20,13 +20,13 @@ var paths = {
   bundles: "./dist/bundles",
   min: "./dist/min",
   fonts: "./dist/fonts",
-  DistImg: './dist/images',
+  DistImg: "./dist/images",
   vendor: "./dist/vendor",
 
   js: "./src/js",
   scss: "./src/scss",
   views: "./src/views",
-  img: './src/images',
+  img: "./src/images",
   temp: "./src/temp",
 
   node: "./node_modules",
@@ -41,24 +41,24 @@ gulp.task("copy_assets", function () {
     .src(paths.node + "/font-awesome/fonts/*.{ttf,woff,woff2,eot,svg}")
     .pipe(gulp.dest(paths.fonts));
 });
-gulp.task('images', function () {
-	return gulp.src([
-		paths.img + '/*',
-		paths.img + '/*/*',
-	])
-		.pipe(image({
-			pngquant: true,
-			optipng: false,
-			zopflipng: true,
-			jpegRecompress: false,
-			mozjpeg: true,
-			guetzli: false,
-			gifsicle: true,
-			svgo: true,
-			concurrent: 10,
-			quiet: true
-		}))
-		.pipe(gulp.dest(paths.DistImg))
+gulp.task("images", function () {
+  return gulp
+    .src([paths.img + "/*", paths.img + "/*/*"])
+    .pipe(
+      image({
+        pngquant: true,
+        optipng: false,
+        zopflipng: true,
+        jpegRecompress: false,
+        mozjpeg: true,
+        guetzli: false,
+        gifsicle: true,
+        svgo: true,
+        concurrent: 10,
+        quiet: true,
+      })
+    )
+    .pipe(gulp.dest(paths.DistImg));
 });
 
 gulp.task("vendor_css", function () {
@@ -189,7 +189,7 @@ var tasks = gulp.series(
   "htmlinclude",
   "js",
   "babeljs",
-  'images'
+  "images"
 );
 
 // Start development server
