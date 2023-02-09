@@ -18,6 +18,8 @@ var paths = {
   dist: "./dist",
 
   bundles: "./dist/bundles",
+  distJs: "./dist/js",
+  distcss: "./dist/css",
   min: "./dist/min",
   fonts: "./dist/fonts",
   DistImg: "./dist/images",
@@ -93,7 +95,7 @@ gulp.task("sass", function () {
       })
     )
     .pipe(concat("style.css"))
-    .pipe(gulp.dest(paths.bundles))
+    .pipe(gulp.dest(paths.distcss))
     .pipe(rename("style.min.css"))
     .pipe(cssnano({ zindex: false }))
     .pipe(gulp.dest(paths.min));
@@ -122,6 +124,10 @@ gulp.task("jshint", function () {
         esversion: 6,
       })
     )
+    .pipe(gulp.dest(paths.distJs))
+    .pipe(rename("script.min.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.min))
     .pipe(jshint.reporter("default"));
 });
 
@@ -189,7 +195,7 @@ var tasks = gulp.series(
   "htmlinclude",
   "js",
   "babeljs",
-  "images"
+  "images",
 );
 
 // Start development server
