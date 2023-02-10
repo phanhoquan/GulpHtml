@@ -3,7 +3,9 @@
   "description": "Master Gulp HTML",
   "version": "1.0.0",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "watch": "gulp watch start",
+    "build": "gulp bulid"
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.3.5",
@@ -26,11 +28,12 @@
     "gulp-imagemin": "^5.0.3",
     "gulp-jshint": "^2.1.0",
     "gulp-rename": "^1.2.3",
-    "gulp-sass": "^3.2.1",
+    "gulp-sass": "^5.1.0",
     "gulp-uglify": "^2.1.2",
     "gulp-wait": "0.0.2",
     "gulp-watch": "^5.0.1",
     "jshint": "^2.9.5",
-    "node-sass": "^4.9.0"
+    "node-sass": "^6.0.1",
+    "sass": "^1.58.0"
   }
 }

@@ -1,5 +1,5 @@
 var gulp = require("gulp"),
-  sass = require("gulp-sass"),
+  sass = require('gulp-sass')(require('sass')),
   autoprefixer = require("gulp-autoprefixer"),
   fileinclude = require("gulp-file-include"),
   concat = require("gulp-concat"),
@@ -30,6 +30,7 @@ var paths = {
   views: "./src/views",
   img: "./src/images",
   temp: "./src/temp",
+  resources: "./src/resources",
 
   node: "./node_modules",
 };
@@ -168,6 +169,12 @@ gulp.task("htmlinclude", function () {
     )
     .pipe(gulp.dest(paths.dist));
 });
+gulp.task("json", function () {
+  browserSync.reload();
+  return gulp
+    .src([paths.resources + "/*.json"])
+    .pipe(gulp.dest(paths.dist));
+});
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -181,6 +188,7 @@ gulp.task("stream", () => {
     },
   });
   gulp.watch(paths.views + "/**/*.html", gulp.series("htmlinclude"));
+  gulp.watch(paths.resources + "/**/*.json", gulp.series("htmlinclude", "json"));
   gulp.watch(paths.scss + "/**/*.scss", gulp.series("sass"));
   gulp.watch(paths.js + "/**/*.js", gulp.series("js"));
   gulp.watch(paths.dist + "/**/*", browserSync.reload);
